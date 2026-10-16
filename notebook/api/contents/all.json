@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-16T10:51:30.599260Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-16T10:51:29.791115Z",
+      "mimetype": null,
+      "name": "Lab-Week-2-Clustering.ipynb",
+      "path": "Lab-Week-2-Clustering.ipynb",
+      "size": 15056,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-16T10:38:23.304381Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-16T09:52:14.478428Z",
+      "mimetype": null,
+      "name": "Lab-Week-1-Preprocessing.ipynb",
+      "path": "Lab-Week-1-Preprocessing.ipynb",
+      "size": 19749,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-16T10:51:30.595693Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-16T10:51:30.595693Z",
+  "mimetype": null,
+  "name": "",
+  "path": "",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

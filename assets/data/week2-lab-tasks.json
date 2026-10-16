@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Create and inspect the data",
+    "instruction": "Run the first dataset cell in the notebook. Identify the observations, features and units. Explain why we scale these features and why the model receives no known customer-group labels."
+  },
+  {
+    "title": "Fit K-means and inspect the groups",
+    "instruction": "Run K-means with k = 3. Describe what the assignments, centroids and SSE tell you. Explain why the cluster numbers are not verified customer categories."
+  },
+  {
+    "title": "Compare different starting centres",
+    "instruction": "Keep X and k fixed. Compare three random initialisations. Explain whether the SSE values or group boundaries differ. Identical results are also a valid finding; explain what you observed."
+  },
+  {
+    "title": "Draw an elbow plot",
+    "instruction": "Compare k = 1 to 8 using the same X. Identify where extra clusters bring smaller improvements, if such a bend is visible. Explain why the lowest SSE alone would keep favouring larger k."
+  },
+  {
+    "title": "Compare silhouette scores and justify k",
+    "instruction": "Use silhouette scores alongside the elbow and plots. State a defensible k and explain why. A larger silhouette score is evidence of compact, separated groups under this distance measure, not proof of meaningful real-world classes."
+  },
+  {
+    "title": "Explore overlapping groups with a GMM",
+    "instruction": "This separate example has overlapping, elongated point clouds. Compare hard K-means assignments with GMM membership probabilities. Inspect the five most ambiguous observations. Explain why those probabilities depend on the fitted model."
+  },
+  {
+    "title": "Your turn: investigate a new dataset",
+    "instruction": "Inspect this new synthetic dataset, prepare its features, fit K-means and compare at least three values of k. Produce elbow and silhouette plots, justify a selected k and discuss one limitation. Try different starts and explain your observations. Optionally compare a GMM. Write your own analysis; no worked solution follows."
+  }
+]

@@ -1,0 +1,7 @@
+sample_id,Age (years),Annual income (Rs),Spending score (0–100),Purchase frequency (per month)
+C1,22,240000,20,2
+C2,28,300000,30,3
+C3,35,480000,60,7
+C4,42,540000,70,9
+C5,31,420000,,5
+C6,63,1800000,25,2

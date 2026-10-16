@@ -1,0 +1,52 @@
+/* Additive Week 2 material. Every rule is scoped to the new sections. */
+.w2-extension{margin-top:44px;padding-top:30px;border-top:1px solid #32cfdf66;color:#d7ecf7}
+.w2-extension-heading{display:flex;align-items:start;justify-content:space-between;gap:24px;margin-bottom:20px}
+.w2-extension h2{font-size:clamp(23px,3vw,31px);line-height:1.3;color:#e5f7ff;margin:9px 0 14px}
+.w2-extension h3{color:#bdeff6;font-size:18px;line-height:1.5;margin:12px 0}
+.w2-extension p{color:#bad2e3;line-height:1.75}
+.w2-eyebrow{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#6bdeec;font-weight:800}
+.w2-panel{padding:clamp(20px,3vw,32px);border:1px solid #7bcde044;border-radius:18px;margin:26px 0;background:radial-gradient(ellipse at top left,#32cfdf09,transparent 65%),#0d1e30;scroll-margin-top:24px;min-width:0}
+.w2-original,.w2-section-nav a{color:#bceffc;border:1px solid #72c4db66;padding:10px 14px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700}
+.w2-original{flex-shrink:0}.w2-section-nav{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.w2-instructions,.w2-feedback{padding:14px 17px;border-left:3px solid #32cfdf;background:#32cfdf0c;border-radius:7px;margin:18px 0;line-height:1.7;color:#d2f1fa}
+.w2-toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:22px 0 12px}
+.w2-toolbar label{display:grid;gap:9px;min-width:220px;font-size:13px;font-weight:700;color:#c6e5f2}
+.w2-extension select{padding:11px 13px;border:1px solid #80cce177;border-radius:8px;background:#122c41;color:#def6ff;font:inherit;max-width:100%}
+.w2-toolbar .w2-cluster-control{min-width:260px;max-width:360px;flex:1;padding:12px 16px;border:1px solid #80cce177;border-radius:10px;background:#122c41;gap:8px;box-sizing:border-box}
+.w2-slider-label{display:flex;align-items:center;justify-content:space-between;gap:20px}.w2-slider-label strong{display:grid;place-items:center;min-width:32px;height:28px;border-radius:7px;background:#a2e9f4;color:#092b3a;font-size:16px;font-variant-numeric:tabular-nums}
+.w2-extension input[type=range]{appearance:none;-webkit-appearance:none;width:100%;height:24px;margin:0;background:transparent;cursor:pointer;touch-action:pan-y}
+.w2-extension input[type=range]::-webkit-slider-runnable-track{height:7px;border:1px solid #528da4;border-radius:8px;background:#24485d}
+.w2-extension input[type=range]::-moz-range-track{height:5px;border:1px solid #528da4;border-radius:8px;background:#24485d}
+.w2-extension input[type=range]::-moz-range-progress{height:5px;border-radius:8px;background:#7bdde9}
+.w2-extension input[type=range]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:20px;height:20px;margin-top:-7px;border:3px solid #e0faff;border-radius:50%;background:#32b9d0;box-shadow:0 2px 4px #0008}
+.w2-extension input[type=range]::-moz-range-thumb{width:14px;height:14px;border:3px solid #e0faff;border-radius:50%;background:#32b9d0;box-shadow:0 2px 4px #0008}
+.w2-slider-scale{display:flex;justify-content:space-between;padding:0 3px;color:#9bbdd0;font-size:11px;font-weight:500}.w2-click-note{font-size:13px;padding:10px 13px;border:1px solid #32cfdf55;border-radius:8px;background:#32cfdf0c}.w2-click-note strong{color:#9becf7}
+.w2-extension button,.w2-toolbar>a{background:linear-gradient(#a2e9f4,#65c8de);border:1px solid #b4eff9;border-bottom:4px solid #2e8a9d;border-radius:8px;color:#092b3a;padding:11px 15px;min-height:44px;font:inherit;font-size:13px;font-weight:800;text-decoration:none;cursor:pointer;box-shadow:0 3px 0 #123344;line-height:1.4}
+.w2-extension button:hover,.w2-toolbar>a:hover{background:linear-gradient(#c7f5fc,#87deec)}
+.w2-extension button[aria-pressed=true]{background:#c1f6ff;border-bottom-width:1px;box-shadow:inset 0 0 0 2px #276a83}
+.w2-extension button[aria-pressed=true]::before{content:'✓ ';font-weight:900}
+.w2-extension button:disabled{opacity:.45;cursor:default}
+.w2-extension :is(button,a,select,input,summary,[role=button]):focus-visible{outline:3px solid #e1d744;outline-offset:4px}
+.w2-comparison-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start;margin:20px 0}
+.w2-comparison-grid>div{min-width:0}.w2-graphic{background:#071728;border:1px solid #80b9d344;border-radius:12px;margin-bottom:14px;overflow:hidden}.w2-graphic svg{width:100%;height:auto;display:block}.w2-graphic text{font:11px system-ui,sans-serif;fill:#b9d8e8}.w2-graphic .w2-data-point{cursor:pointer}.w2-graphic .w2-chart-choice{cursor:pointer}.w2-graphic [aria-pressed=true]{stroke:#f7e267;stroke-width:3}
+.w2-small{font-size:12px!important;color:#abc6d9!important;line-height:1.7}.w2-metrics{display:flex;flex-wrap:wrap;gap:12px}.w2-metrics span{background:#17384a;border:1px solid #5bc6dd55;padding:9px 13px;border-radius:8px;font-size:13px;color:#def8ff}
+.w2-explanation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:26px 0 12px}.w2-explanation-grid article{padding:16px;border:1px solid #7393b333;border-radius:12px;background:#081a2a}.w2-explanation-grid h3{font-size:16px}.w2-explanation-grid p{font-size:13px}
+.w2-details{margin-top:22px;border:1px solid #7393b344;border-radius:10px;padding:0 16px}.w2-details summary{padding:15px 0;color:#d1f5ff;font-weight:700;cursor:pointer}.w2-details p{font-size:13px}
+.w2-membership{padding:20px;border:1px solid #9cc5dc44;border-radius:12px;background:#12293c}.w2-membership label{display:grid;gap:9px;color:#d0eaf4;font-size:13px}
+.w2-probability-bar{display:flex;height:28px;border:1px solid #b0d9e9;border-radius:8px;overflow:hidden;margin:18px 0}.w2-probability-bar span:first-child{background:#32cfdf}.w2-probability-bar span:last-child{background:#df50bb}
+.w2-notebook-workspace{display:grid;grid-template-columns:minmax(230px,.7fr) minmax(0,1.6fr);gap:16px;margin:20px 0;align-items:start}.w2-task-panel{min-width:0;padding:17px;border:1px solid #9dbbfa55;border-radius:14px;background:#0a192b}.w2-task-nav{display:flex;justify-content:space-between;align-items:center;gap:7px;margin-bottom:18px}.w2-task-nav button{padding:8px 10px;font-size:12px}.w2-task-nav span{white-space:nowrap;font-size:12px}.w2-lab-task p{font-size:14px}.w2-notebook-frame{border:1px solid #9dbbfa66;border-radius:14px;overflow:hidden;min-width:0;min-height:720px;background:#111820}
+#w2NotebookFrame{width:100%;height:760px;border:0;display:block}#w2NotebookPlaceholder{min-height:720px;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:28px;background:radial-gradient(ellipse,#193752,#101b2d);color:#d7f5ff}
+.w2-notebook-workspace.w2-expanded{grid-template-columns:minmax(0,1fr)}.w2-expanded .w2-task-panel{display:none}.w2-expanded #w2NotebookFrame{height:85vh;min-height:600px}.w2-extension [hidden]{display:none!important}
+.w2-export{margin-top:24px;padding:20px;border:1px solid #32cfdf66;border-radius:12px;background:#102a3c}
+.w2-recap{text-align:left;margin:20px 0 40px;border:1px solid #80dfee;border-radius:15px;padding:0;background:#0c2134;box-shadow:0 0 24px #32cfdf20;overflow:hidden}
+.w2-recap summary{font-size:clamp(20px,2.5vw,26px);font-weight:800;line-height:1.4;color:#092c3b;padding:clamp(20px,3vw,28px);background:linear-gradient(135deg,#b6f1fa,#78dce9);border-bottom:5px solid #278499;cursor:pointer;min-height:88px}
+.w2-recap summary::marker{color:#123b4b}
+.w2-recap summary:hover{background:linear-gradient(135deg,#d0f8ff,#92e6f1)}
+.w2-recap summary:focus-visible{outline:3px solid #e1d744;outline-offset:-5px}
+.w2-recap ol{padding:8px clamp(24px,4vw,42px) 18px clamp(42px,5vw,60px)}
+.w2-recap li{font-size:16px;line-height:1.8;color:#d8edf7;margin:12px 0}
+.w2-recap li::marker{font-weight:800;color:#7de3f0}
+.w2-recap{max-width:830px;margin-left:auto;margin-right:auto}
+.w2-preserved-note{font-size:13px;text-align:center}.w2-preserved-note a{color:#83e2f0}
+@media(max-width:950px){.w2-notebook-workspace{grid-template-columns:minmax(0,1fr)}.w2-explanation-grid{grid-template-columns:1fr}.w2-extension-heading{flex-direction:column}.w2-notebook-frame,#w2NotebookPlaceholder{min-height:560px}#w2NotebookFrame{height:650px}}
+@media(max-width:760px){.w2-comparison-grid{grid-template-columns:minmax(0,1fr)}.w2-toolbar label,.w2-toolbar .w2-cluster-control{min-width:0;max-width:none;width:100%}.w2-toolbar button,.w2-toolbar>a{flex:1 1 150px;text-align:center}.w2-panel{padding:18px}}
