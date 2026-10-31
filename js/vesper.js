@@ -39,7 +39,7 @@ return {createGuide,initScene};
 
 /* LAB RADIO SHARED START */
 (() => {
- if(!document.head||document.getElementById('labRadioLoader'))return;
+ if(window.parent!==window||!document.head||document.getElementById('labRadioLoader'))return;
  const css=document.createElement('link');css.rel='stylesheet';css.href='css/music-player.css';document.head.appendChild(css);
  const catalogue=document.createElement('script');catalogue.id='labRadioLoader';catalogue.src='js/music-playlists.js';
  catalogue.onload=()=>{const player=document.createElement('script');player.src='js/music-player.js';document.head.appendChild(player)};

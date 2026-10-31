@@ -6,9 +6,12 @@
  // Fisher–Yates: choose both the opening song and queue order without fetching media.
  const playlist=[...(window.LabMusicTracks||[])];
  for(let i=playlist.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[playlist[i],playlist[j]]=[playlist[j],playlist[i]]}
+ let saved=null;try{saved=JSON.parse(sessionStorage.getItem('lab-radio-state-v1'));if(saved&&Array.isArray(saved.queue)){const order=saved.queue.map(src=>playlist.find(t=>t.src===src)).filter(Boolean);if(order.length===playlist.length&&new Set(order).size===playlist.length)playlist.splice(0,playlist.length,...order)}}catch{}
  const tap=()=>window.LabShared?.playSound('tap');
  const audio=$('labMusic'),play=$('musicPlay'),body=$('musicBody'),fold=$('musicFold'),seek=$('musicSeek'),volume=$('musicVolume'),picker=$('musicTrack');
- let index=0,wanted=false,request=0,drag=null,radioState='ready',mediaUrl=null,download=null,scrubbing=false;
+ let index=Math.max(0,playlist.findIndex(t=>t.src===saved?.src)),wanted=false,request=0,drag=null,radioState='ready',mediaUrl=null,download=null,scrubbing=false;
+ let resumeTime=Number.isFinite(saved?.time)?Math.max(0,saved.time):0;
+ function saveState(){try{sessionStorage.setItem('lab-radio-state-v1',JSON.stringify({queue:playlist.map(t=>t.src),src:playlist[index]?.src,time:audio.currentTime||resumeTime,volume:audio.volume}))}catch{}}
  const menu=$('musicPlaylist');
  const clock=value=>{const n=Number.isFinite(value)?Math.max(0,Math.floor(value)):0;return Math.floor(n/60)+':'+String(n%60).padStart(2,'0')};
  // Duplicate the title only when it overflows. The duplicate makes each radio
@@ -20,19 +23,22 @@
  function releaseTrack(){download?.abort();download=null;if(mediaUrl)URL.revokeObjectURL(mediaUrl);mediaUrl=null}
  function skip(direction){if(!playlist.length)return;const resume=wanted;selectTrack((index+direction+playlist.length)%playlist.length);if(resume)start()}
  $('musicPrevious').addEventListener('click',()=>{tap();skip(-1)});$('musicNext').addEventListener('click',()=>{tap();skip(1)});
- function selectTrack(next){request++;wanted=false;audio.pause();releaseTrack();audio.removeAttribute('src');audio.load();index=next;picker.value=index;$('musicTitle').textContent=playlist[index].title;picker.title=playlist[index].title;picker.setAttribute('aria-label','Choose a track. Selected: '+playlist[index].title);updateChoices();playLabel();timeline();status('Ready · audio loads when you press Play')}
+ function selectTrack(next){resumeTime=0;request++;wanted=false;audio.pause();releaseTrack();audio.removeAttribute('src');audio.load();index=next;picker.value=index;$('musicTitle').textContent=playlist[index].title;picker.title=playlist[index].title;picker.setAttribute('aria-label','Choose a track. Selected: '+playlist[index].title);updateChoices();playLabel();timeline();status('Ready · audio loads when you press Play')}
  async function start(){if(!playlist.length)return;const ticket=++request;wanted=true;playLabel();status('Buffering music…','buffering');
   try{
    if(audio.error){releaseTrack();audio.removeAttribute('src')}
    // Fetch just the selected track after Play. A local Blob gives the media
    // element the whole file to seek through, independent of HTTP range support.
    if(!mediaUrl){const controller=new AbortController();download=controller;const response=await fetch(playlist[index].src,{signal:controller.signal});if(!response.ok)throw new Error('Audio unavailable');const blob=await response.blob();if(ticket!==request||!wanted)return;download=null;mediaUrl=URL.createObjectURL(blob);audio.src=mediaUrl}
+   if(resumeTime>0){audio.addEventListener('loadedmetadata',()=>{if(ticket===request&&resumeTime>0){audio.currentTime=Math.min(resumeTime,Number.isFinite(audio.duration)?audio.duration:resumeTime);resumeTime=0}},{once:true})}
    await audio.play();if(ticket!==request)return;if(!wanted){audio.pause();return}status('Playing · '+playlist[index].title,'playing')
   }catch(error){if(ticket!==request)return;download=null;wanted=false;playLabel();status('Could not play. Press Play to retry.','error')}
  }
  play.addEventListener('click',()=>{tap();if(wanted){request++;wanted=false;download?.abort();download=null;audio.pause();playLabel();status('Paused','paused')}else start()});
  function setVolume(value){const parsed=Number(value);if(!Number.isFinite(parsed))return;const percent=Math.max(0,Math.min(100,Math.round(parsed)));audio.volume=percent/100;volume.value=percent;$('musicVolumeDown').disabled=percent===0;$('musicVolumeUp').disabled=percent===100}
- setVolume(30);
+ setVolume(Number.isFinite(saved?.volume)?saved.volume*100:30);
+ ['timeupdate','pause','volumechange','playing'].forEach(event=>audio.addEventListener(event,saveState));
+ window.addEventListener('pagehide',saveState);
  volume.addEventListener('input',()=>{if(volume.value!=='')setVolume(volume.value)});
  volume.addEventListener('change',()=>{tap();setVolume(volume.value===''?audio.volume*100:volume.value)});
  $('musicVolumeDown').addEventListener('click',()=>{tap();setVolume(Math.round(audio.volume*100)-5)});
@@ -68,5 +74,5 @@
  grip.addEventListener('keydown',event=>{const moves={ArrowLeft:[-16,0],ArrowRight:[16,0],ArrowUp:[0,-16],ArrowDown:[0,16]};if(event.key==='Home'){event.preventDefault();panel.style.left='';panel.style.top='';panel.style.bottom='';return}if(moves[event.key]){event.preventDefault();const r=panel.getBoundingClientRect(),[x,y]=moves[event.key];position(r.left+x,r.top+y)}});
  window.addEventListener('resize',()=>{clamp();requestAnimationFrame(radioScroll)});window.addEventListener('pagehide',()=>{request++;wanted=false;download?.abort();download=null;audio.pause();playLabel();status('Paused','paused')});
  if(!playlist.length){play.disabled=true;status('No music added yet');return}
- $('musicTitle').textContent=playlist[0].title;picker.title=playlist[0].title;picker.setAttribute('aria-label','Choose a track. Selected: '+playlist[0].title);status('Ready · audio loads when you press Play');timeline();collapse(true);
+ $('musicTitle').textContent=playlist[index].title;picker.title=playlist[index].title;picker.setAttribute('aria-label','Choose a track. Selected: '+playlist[index].title);status('Ready · audio loads when you press Play');timeline();collapse(true);
 })();

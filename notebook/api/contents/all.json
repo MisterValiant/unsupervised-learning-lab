@@ -27,6 +27,20 @@
       "size": 19749,
       "type": "notebook",
       "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-28T18:30:00.000000Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-28T18:30:00.000000Z",
+      "mimetype": null,
+      "name": "Lab-Week-3-Shape-and-Density.ipynb",
+      "path": "Lab-Week-3-Shape-and-Density.ipynb",
+      "size": 22750,
+      "type": "notebook",
+      "writable": true
     }
   ],
   "created": "2026-10-16T10:51:30.595693Z",

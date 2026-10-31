@@ -66,6 +66,7 @@ function initNavigation(){
  const prefetched=new Set();
  const assets={
   'week1.html':['css/week1.css','js/week1-core.js','js/week1-visuals.js','js/week1.js','assets/images/vesper-discovery.webp'],
+  'week3.html':['css/week3.css','js/week3-core.js','js/week3.js'],
   'week2.html':['css/week2.css','js/week2.js','assets/images/vesper-kmeans.webp'],
   'index.html':['css/homepage.css','js/homepage.js','assets/images/vesper-welcome.webp']
  };
