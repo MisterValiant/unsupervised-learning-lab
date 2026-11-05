@@ -1,7 +1,7 @@
 (() => {
  const frame=document.getElementById('learningPage');
  const root=new URL('./',location.href);
- const pages=new Set(['index.html','week1.html','week2.html','week2-original.html','week3.html']);
+ const pages=new Set(['index.html','week1.html','week2.html','week2-original.html','week3.html','week4.html']);
  function valid(value){try{const url=new URL(value,root);return url.origin===root.origin&&url.pathname.startsWith(root.pathname)&&pages.has(url.pathname.slice(root.pathname.length))?url:null}catch{return null}}
  let first;try{first=valid(decodeURIComponent(location.hash.slice(1)))}catch{}
  first ||= new URL('index.html',root);
